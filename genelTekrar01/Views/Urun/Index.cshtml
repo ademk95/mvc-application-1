@@ -1,0 +1,110 @@
+﻿@using genelTekrar01.Models
+@model List<UrunModel>
+
+@{
+    ViewBag.Title = "Index";
+    Layout = "~/Views/Shared/_LayoutAdmin.cshtml";
+}
+
+@if (TempData["Urun"] != null)
+{
+    var urun2 = (genelTekrar01.Models.Urun)TempData["Urun"];
+
+    <div class="alert alert-success" role="alert">
+        <strong>
+            <span class="glyphicon glyphicon-ok"></span>
+            @urun2.UrunAdi
+        </strong>
+        isimli üründe değişikler kaydedildi.
+    </div>
+}
+
+<!-- DataTables Example -->
+<div class="card mb-3">
+    <div class="card-header">
+        <i class="fas fa-table"></i>
+        Ürünler Tablosu
+    </div>
+    <div class="container">
+        <br />
+        <p>
+            @Html.ActionLink("Yeni Urun Ekle", "Create", "Urun", null, new { @class = "btn btn-primary" })
+        </p>
+    </div>
+    <div class="card-body">
+        <div class="table-responsive">
+            <table class="table table-bordered table-dark table table-hover" id="dataTable" width="100%" cellspacing="0">
+                <thead>
+                    <tr>
+                        <th>Resim</th>
+                        <th>Kategori Adı</th>
+                        <th>Ürün Adı</th>
+                        <th>Ürün Acıkmalası</th>
+                        <th>Ürün Stok Durumu</th>
+                        <th>Ürün Fiyat</th>
+                        <th>Onay Durumu</th>
+                        <th width="18%"></th>
+                     
+                    </tr>
+                </thead>
+                
+                <tbody>
+                    @foreach (var urun in Model)
+                    {
+                        <tr>
+                            <td>
+                                <img src="https://via.placeholder.com/50" alt="UrunResim" />
+                            </td>
+                            <td>
+                                @urun.KategoriAdi
+                            </td>
+                            <td>
+                                @urun.UrunAdi
+                            </td>
+                            <td>
+                                @urun.UrunAciklama
+                            </td>
+                            <td>
+                                @if (urun.StoktaMi == true)
+                                {
+                                    <label class="text text-success">Stokta Var.</label>
+                                }
+                                else
+                                {
+                                    <label class="text text-danger">Stokta Yok.</label>
+                                }
+                            </td>
+                            <td>
+                                @urun.UrunFiyat
+                            </td>
+
+                            <td>
+                                @if (urun.Anasayfa)
+                                {
+                                    <label class="text text-success">Onaylı</label>
+                                }
+                                else
+                                {
+                                    <label class="text text-danger">Onay Bekliyor</label>
+                                }
+                            </td>
+                            <td>
+                                @Html.ActionLink("Düzenle", "Edit", "Urun", new { id = urun.Id }, new { @class = "btn btn-primary btn-xs" })
+                         
+                                @*@Html.ActionLink("Detay", "Details", "Urun", new { id = urun.Id }, new { @class = "btn btn-warning btn-xs" })*@
+                           
+                                @Html.ActionLink("Sil", "Delete", "Urun", new { id = urun.Id }, new { @class = "btn btn-danger btn-xs" })
+                            </td>
+                        </tr>
+
+                    }
+
+                </tbody>
+            </table>
+        </div>
+    </div>
+    
+</div>
+
+
+

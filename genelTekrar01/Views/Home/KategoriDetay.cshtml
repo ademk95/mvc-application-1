@@ -1,0 +1,118 @@
+﻿@using genelTekrar01.Models
+@model List<UrunKategoriViewModel>
+
+@{
+    ViewBag.Title = "KategoriDetay";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+
+}
+
+<head>
+    <link rel="stylesheet" href="~/Content/_01Temp/css/bootstrap.min.css" />
+    <link rel="stylesheet" href="~/Content/_01Temp/css/font-awesome.min.css" />
+    <link rel="stylesheet" href="~/Content/_01Temp/css/owl.carousel.min.css" />
+    <link rel="stylesheet" href="~/Content/_01Temp/css/animate.css" />
+</head>
+
+<!-- Page Preloder -->
+@*<div id="preloder">
+        <div class="loader"></div>
+    </div>*@
+
+@ViewBag.KategoriInfo
+
+@*@foreach (var item in ViewBag.KategoriInfo)
+{
+    @item.
+}*@
+
+<!-- Page section -->
+<div class="page-section gallery-page">
+    <ul class="portfolio-filter">
+        @*<li class="filter all active" data-filter=".@ViewBag.KategoriInfo">KategoriInfo</li>*@
+        <li class="filter all active" data-filter="*">Tüm Ürünler</li>
+        @*<li class="filter all active" data-filter="*">Tüm Ürünler</li>*@
+        @foreach (var kategori in Model)
+        {
+            <li class="filter" data-filter=".@kategori.KategoriId">@kategori.KategoriAdi</li>
+
+        }
+    </ul>
+
+    <div class="portfolio-gallery">
+
+        @foreach (var kategori in Model)
+        {
+
+            foreach (var urun in kategori.Urunler)
+            {
+
+                <div class="gallery-item @kategori.KategoriId m-1">
+                    @*<img src="~/Content/_01Temp/img/gallery/2.jpg" alt="">*@
+                    <img src="https://via.placeholder.com/450" alt="">
+                    <b>@urun.UrunAdi</b>
+                    <div class="hover-links">
+                        <a href="@Url.Action("UrunDetay","Home",new { id=urun.Id })" class="site-btn sb-light">@urun.UrunAdi</a>
+                        @*@Html.ActionLink(urun.UrunAdi,"UrunDetay","Home",new {id=urun.Id })*@
+                    </div>
+                </div>
+
+            }
+
+        }
+
+    </div>
+
+</div>
+
+
+
+
+<!--====== Javascripts & Jquery ======-->
+<script src="~/Content/_01Temp/js/jquery-3.2.1.min.js"></script>
+<script src="~/Content/_01Temp/js/bootstrap.min.js"></script>
+<script src="~/Content/_01Temp/js/owl.carousel.min.js"></script>
+<script src="~/Content/_01Temp/js/jquery.nicescroll.min.js"></script>
+<script src="~/Content/_01Temp/js/isotope.pkgd.min.js"></script>
+<script src="~/Content/_01Temp/js/imagesloaded.pkgd.min.js"></script>
+<script src="~/Content/_01Temp/js/circle-progress.min.js"></script>
+<script src="~/Content/_01Temp/js/main.js"></script>
+<link rel="stylesheet" href="~/Content/_01Temp/css/style.css" />
+
+<!-- Page section end-->
+@*<div class="gallery-item nature">
+        <img src="~/Content/_01Temp/img/gallery/2.jpg" alt="">
+        <div class="hover-links">
+            <a href="" class="site-btn sb-light">Next</a>
+        </div>
+    </div>
+    <div class="gallery-item bb">
+        <img src="~/Content/_01Temp/img/gallery/3.jpg" alt="">
+        <div class="hover-links">
+            <a href="" class="site-btn sb-light">Next</a>
+        </div>
+    </div>
+    <div class="gallery-item photo">
+        <img src="~/Content/_01Temp/img/gallery/5.jpg" alt="">
+        <div class="hover-links">
+            <a href="" class="site-btn sb-light">Next</a>
+        </div>
+    </div>
+    <div class="gallery-item nature">
+        <img src="~/Content/_01Temp/img/gallery/6.jpg" alt="">
+        <div class="hover-links">
+            <a href="" class="site-btn sb-light">Next</a>
+        </div>
+    </div>
+    <div class="gallery-item photo">
+        <img src="~/Content/_01Temp/img/gallery/4.jpg" alt="">
+        <div class="hover-links">
+            <a href="" class="site-btn sb-light">Next</a>
+        </div>
+    </div>*@
+
+@*<li class="filter" data-filter=".photo">Photography</li>
+    @*<li class="filter" data-filter=".photo">Photography</li>
+    <li class="filter" data-filter=".nature">Nature</li>
+    <li class="filter" data-filter=".bb">Love</li>
+    <li class="filter" data-filter=".aaa">Animals</li>*@

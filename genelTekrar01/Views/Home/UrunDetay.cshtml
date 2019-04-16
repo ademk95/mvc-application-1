@@ -1,0 +1,69 @@
+﻿@using genelTekrar01.Models
+@model UrunModel
+
+@{
+    ViewBag.Title = "UrunDetay";
+    Layout = "~/Views/Shared/_LayoutHome.cshtml";
+
+}
+
+<div class="row">
+    <div class="col-md-3">
+        <h2 class="alert alert-dark">Kategoriler</h2>
+        <hr />
+        @Html.Action("KategoriDinamik", "Home")
+        <hr />
+        <div class="well">
+            <h4>Urun Arama</h4>
+            <hr />
+            @Html.Action("SearchHome", "Home")
+
+        </div>
+        <hr />
+        @Html.Action("KategoriUrun", "Home", new { id = Model.KategoriId })
+
+
+    </div>
+    <div class="col-md-9">
+        <div class="jumbotron" style="background-image: url('https://via.placeholder.com/450');">
+            <h1 class="display-1">
+
+                @Model.UrunAdi
+            </h1>
+            <hr />
+            <h3>
+                <img src="https://img.icons8.com/ios/50/000000/tags-filled.png">
+                <b>@Model.KategoriAdi</b>
+            </h3>
+            <h3>
+                <img src="https://img.icons8.com/ios/50/000000/bill-filled.png">
+                <b>@Model.UrunAciklama</b>
+            </h3>
+            <p>
+                <img src="https://img.icons8.com/wired/50/000000/price-tag.png">
+                <strong>Fiyat : </strong>@(Model.UrunFiyat) <strong>₺</strong>
+            </p>
+
+            <p>
+                <a class="btn btn-danger btn-lg" href="#" role="button">
+                    Sepete Ekle
+                    <img src="https://img.icons8.com/ios/50/000000/add-shopping-cart-filled.png">
+                </a>
+
+            </p>
+        </div>
+    </div>
+    
+        <div class="col-md-9">
+            @Html.Action("KategoriList", "Home")
+        </div>
+    </div>
+
+
+
+
+
+@*buraya bi partial View Urune ait kategorileri Getir.*@
+
+<hr />
+

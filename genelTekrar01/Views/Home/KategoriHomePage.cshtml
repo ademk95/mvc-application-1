@@ -1,0 +1,92 @@
+﻿@using genelTekrar01.Models
+@model List<UrunKategoriViewModel>
+
+<head>
+    <style>
+
+        .dropdown2 {
+            position: relative;
+            font-size:105%;
+        }
+
+        .dropdown-menu2 {
+            display: none;
+            background-color: #265A88;
+            /*min-width: 250px;*/
+            min-width: 25%;
+            cursor: pointer;
+        }
+
+        #bum li a {
+            color: white;
+            text-decoration: none;
+            
+        }
+
+        #bum li {
+
+            color: white;
+            padding: 10px;
+            text-decoration: none;
+            display: block;
+        }
+
+        .dropdown2:hover .dropdown-menu2 {
+            display: block;
+            
+            /*left:260px;
+            top:20px;*/
+        }
+
+        #bum:hover a:hover{
+            font-size:120%;
+        }
+        #pof{
+            text-decoration:none;
+        }
+        #off{
+            text-align:right;
+        }
+      
+
+    </style>
+</head>
+
+@foreach (var kategori in Model)
+{
+    <div class="dropdown2">
+
+        <a href="@Url.Action("KategoriDetay","Home",new {id=kategori.KategoriId })" id="pof">
+            <b style="font-size:120%;">
+                <span style="font-family:'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif">
+                    @kategori.KategoriAdi
+                </span>
+                <span id="off">
+                    
+                        <img src="https://img.icons8.com/cotton/34/000000/one-page.png">
+                        @kategori.UrunSayisi
+                    
+                </span>
+
+            </b>
+        </a>
+        <button class="btn btn-primary col-md-12" type="button"></button>
+        <br />
+        <br />
+        <ul class="dropdown-menu2" id="bum">
+
+            @foreach (var urun in kategori.Urunler)
+            {
+
+                <li><a href="@Url.Action("UrunDetay","Home",new {id=urun.Id})">@(urun.UrunAdi)</a></li>
+               
+
+            }
+
+        </ul>
+
+    </div>
+}
+
+
+

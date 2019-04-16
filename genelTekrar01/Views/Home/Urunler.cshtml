@@ -1,0 +1,71 @@
+﻿@using genelTekrar01.Models
+@model IEnumerable<UrunModel>
+
+@{
+    ViewBag.Title = "Urunler";
+    Layout = "~/Views/Shared/_LayoutHome.cshtml";
+}
+
+<div class="row">
+    <div class="col-md-3">
+
+        <h2 class="alert alert-dark">Kategoriler</h2>
+        <hr />
+        <div class="row">
+            <div class="col-md-12">
+                @Html.Action("KategoriDinamik", "Home")
+            </div>
+        </div>
+
+        <hr />
+        <div class="well">
+            <h4>Urun Arama</h4>
+            <hr />
+            @Html.Action("SearchHome", "Home")
+
+        </div>
+    </div>
+    <div class="col-md-9">
+        <h2 class="alert alert-danger">Tüm Ürünler</h2>
+        <hr />
+        @foreach (var urun in Model)
+        {
+            <div class="alert alert-info col-md-5" style="margin-right:50px;">
+                <div class="card mb-4" style="max-width: 500px;">
+                    <div class="row">
+                        <div class="col-md-5">
+                            <img src="https://via.placeholder.com/140" class="card-img p-1" alt="...">
+                        </div>
+                        <div class="col-md-7">
+                            <div class="card-body">
+                                <h5 class="card-title">
+                                    <img src="https://img.icons8.com/ios/40/000000/employee-card-filled.png">
+                                    <b>@urun.UrunAdi</b>
+                                </h5>
+                                <p class="card-text">
+                                    <img src="https://img.icons8.com/ios/40/000000/purchase-order-filled.png">
+
+                                    <b>@urun.UrunAciklama</b>
+                                </p>
+                                <p class="card-text">
+                                    <img src="https://img.icons8.com/ios/40/000000/price-tag-filled.png">
+                                    <b>@(urun.UrunFiyat + " TL")</b>
+                                    @*<button class="btn btn-success">Detay</button>*@
+                                </p>
+                                <p class="card-text">
+
+                                    @*<img src="https://img.icons8.com/ios/50/000000/details-pane-filled.png">*@
+                                    @Html.ActionLink("Detay", "UrunDetay", "Home", new { id = urun.Id@*,urunAdi=urun.UrunAdi*@}, new { @class = "btn btn-success" })
+
+                                    <img src="https://img.icons8.com/ios/50/000000/add-shopping-cart-filled.png" style="margin-left:20px;">
+                                </p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        }
+
+    </div>
+
+</div>

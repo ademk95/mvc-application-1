@@ -1,0 +1,71 @@
+﻿@using genelTekrar01.Models
+@model List<Urun>
+
+
+
+@if (Model.Count == 0)
+{
+    <div class="alert alert-danger">
+        <span class="glyphicon glyphicon-hd-video"></span>
+        <b>
+            Aradıgınız kayıt bulunmamaktadır.
+        </b>
+    </div>
+}
+
+else
+{
+    <div class="row">
+        <div class="col-md-12">
+            <div class="alert alert-success">
+                <p>
+                    <b style="font-size:large"> @ViewBag.ArananKelime </b>
+                    arama sonuçları
+                </p>
+                <p>
+                    <b style="font-size:larger"> @Model.Count </b> ürün  listeleniyor . .
+                </p>
+            </div>
+        </div>
+    </div>
+
+    <div class="row">
+        <div class="col-md-12">
+            <div class="row">
+                @foreach (var urun in Model)
+                {
+                    <div class="col-md-3 col-sm-6 alert alert-success">
+                        <div class="thumbnail">
+                            <img src="https://via.placeholder.com/150" alt="...">
+                            <div class="caption">
+                                @*<p>
+                                        <img src="https://img.icons8.com/ios/20/000000/medium-priority-filled.png">
+                                        <b>@urun.Kategori.KategoriAdi</b>
+                                    </p>*@
+
+                                <h5>
+                                    <img src="https://img.icons8.com/ios/20/000000/tags-filled.png">
+                                    <b>@urun.UrunAdi</b>
+                                </h5>
+                                <p>
+                                    <img src="https://img.icons8.com/wired/24/000000/price-tag-euro.png">
+
+                                    <b>Fiyat : </b><strong>@urun.UrunFiyat <b>TL</b></strong>
+                                </p>
+
+
+                                <p><a href="@Url.Action("UrunDetay","Home", new {id=urun.Id })" class="btn btn-primary btn-lg" role="button">Urun Detay</a></p>
+
+
+                            </div>
+                        </div>
+                    </div>
+                }
+
+
+            </div>
+
+        </div>
+    </div>
+}
+

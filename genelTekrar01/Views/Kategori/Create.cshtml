@@ -1,0 +1,30 @@
+﻿@using genelTekrar01.Models
+@model Kategori
+
+@{
+    ViewBag.Title = "Create";
+    Layout = "~/Views/Shared/_LayoutAdmin.cshtml";
+}
+
+<h2 class="alert alert-info">Kategori Ekleme Sayfası</h2>
+<hr />
+
+@using (Html.BeginForm())
+{
+    //bu kardeşimiz güvenlik için kullanılıyor.,get ile olusuyor.Güvenlik amaçlı
+    @Html.AntiForgeryToken()
+
+    <div class="form-group">
+        @Html.LabelFor(model => model.KategoriAdi, new { @class = "control-label col-md-2" })
+        <div class="col-md-10">
+            @Html.TextBoxFor(model => model.KategoriAdi, new { @class = "form-control" })
+        </div>
+    </div>
+    <div class="form-group">
+        <div class="col-md-10">
+            <input type="submit" value="Kategori Ekle" class="btn btn-warning" />
+        </div>
+    </div>
+
+}
+

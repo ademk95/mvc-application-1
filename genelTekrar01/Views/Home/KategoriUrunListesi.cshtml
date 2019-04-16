@@ -1,0 +1,36 @@
+﻿@using genelTekrar01.Models
+@model List<UrunModel>
+
+<h4>Aynı Kategorili Ürün</h4>
+<hr />
+@foreach (var urun in Model)
+{
+    <div class="col-md-12 alert alert-warning">
+        <div class="thumbnail alert alert-warning">
+            <img src="https://via.placeholder.com/150" alt="...">
+            <div class="caption">
+                <p>
+                    <img src="https://img.icons8.com/dotty/34/000000/employee-card.png">
+                    <b style="font-size:18px;">@urun.UrunAdi</b>
+                </p>
+
+                <h4>
+                    <img src="https://img.icons8.com/ios/30/000000/medium-priority-filled.png">
+
+                    <b>@urun.KategoriAdi</b>
+                </h4>
+                <p>
+                    <b>
+                        <img src="https://img.icons8.com/wired/24/000000/price-tag-euro.png">
+                    </b><strong style="font-size:20px;">@urun.UrunFiyat <b>TL</b></strong>
+                </p>
+                <p><a href="@Url.Action("UrunDetay","Home", new {id=urun.Id })" class="btn btn-primary btn-lg" role="button">Urun Detay</a></p>
+
+            </div>
+        </div>
+    </div>
+}
+
+
+
+

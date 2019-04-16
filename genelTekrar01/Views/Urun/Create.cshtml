@@ -1,0 +1,122 @@
+﻿@using genelTekrar01.Models
+@model Urun
+
+@{
+    ViewBag.Title = "Create";
+    Layout = "~/Views/Shared/_LayoutAdmin.cshtml";
+}
+
+<h2 class="alert alert-success">Urun Ekleme Sayfasi</h2>
+<hr />
+
+@using (Html.BeginForm())
+{
+    @Html.AntiForgeryToken()
+
+    @*<div class="form-group">
+
+            <div class="col-md-3">
+
+            </div>
+        </div>*@
+
+    <div class="row">
+        <div class="col-md-4 alert alert-info">
+            <h4>
+                Son Eklenen Ürünler
+            </h4>
+            <hr />
+            @Html.Action("UrunList", "Urun")
+        </div>
+        <div class="col-md-8 alert alert-dark">
+            <div class="row">
+                <div class="col-md-6">
+
+                    <div class="input-group">
+                        <div class="input-group-prepend">
+                            <span class="input-group-text">Urun Adı</span>
+                        </div>
+                        @Html.TextBoxFor(model => model.UrunAdi, new { @class = "form-control" })
+
+                    </div>
+                </div>
+                <div class="col-md-6">
+
+                    <div class="input-group">
+                        <div class="input-group-prepend">
+                            <span class="input-group-text">Urun Fiyatı</span>
+                        </div>
+                        @Html.TextBoxFor(model => model.UrunFiyat, new { @class = "form-control" })
+
+                    </div>
+                </div>
+            </div>
+            <br />
+            <div class="row">
+                <div class="col-md-6">
+
+                    <div class="input-group">
+                        <div class="input-group-prepend">
+                            <span class="input-group-text">Urun Resim Adresi</span>
+                        </div>
+                        @Html.TextBoxFor(model => model.UrunResim, new { @class = "form-control" })
+                    </div>
+                </div>
+                <div class="col-md-6">
+
+                    <div class="input-group">
+                        <div class="input-group-prepend">
+                            <span class="input-group-text">Urun İçerik</span>
+                        </div>
+                        @Html.TextBoxFor(model => model.Icerik, new { @class = "form-control" })
+
+                    </div>
+                </div>
+            </div>
+            <br />
+            <div class="row">
+
+                <div class="col-md-12">
+                    <div class="input-group">
+                        <div class="input-group-prepend">
+                            <span class="input-group-text">Urun Acıklama</span>
+                        </div>
+                        <div class="col-md-9">
+                            @Html.TextAreaFor(model => model.UrunAciklama, new { @class = "form-control" })
+                        </div>
+
+
+                    </div>
+                </div>
+
+            </div>
+            <br />
+            <div class="row">
+                <div class="col-md-12">
+                    <div class="input-group">
+                        <div class="input-group-prepend">
+                            <span class="input-group-text">Urun Kategorisi</span>
+                        </div>
+                        <div>
+                            @Html.DropDownList("KategoriId", null, "Kategori Seçiniz . ", new { @class = "form-control " })
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+            <br />
+            <div class="row">
+                <div class="col-md-6">
+                    <div class="form-group">
+                        <input type="submit" value="Urun Ekle" class="btn btn-success btn-lg" />
+                    </div>
+                </div>
+            </div>
+
+        </div>
+    </div>
+
+}
+
+
+

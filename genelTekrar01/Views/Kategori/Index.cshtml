@@ -1,0 +1,97 @@
+﻿@using genelTekrar01.Models
+@model List<UrunKategoriViewModel>
+
+@{
+    ViewBag.Title = "Index";
+    Layout = "~/Views/Shared/_LayoutAdmin.cshtml";
+}
+
+
+
+@*<table class="table table-bordered table-hover table-dark table-responsive-md">
+
+        <tr>
+            <th width="10%">
+                Resim
+            </th>
+            <th>
+                Kategori Adı
+
+            </th>
+            <th>
+                Urun Sayısı
+            </th>
+            <th width="25%">
+
+            </th>
+
+        </tr>
+
+
+
+    </table>*@
+
+<!-- DataTables Example -->
+<div class="card mb-3">
+    <div class="card-header">
+        <i class="fas fa-table"></i>
+        Kategori Tablosu
+    </div>
+    <div class="container">
+        <br />
+        <p>
+            @Html.ActionLink("Yeni Kategori Ekle", "Create", "Kategori", null, new { @class = "btn btn-primary" })
+        </p>
+    </div>
+    <div class="card-body">
+        <div class="table-responsive">
+            <table class="table table-bordered table-dark table table-hover" id="dataTable" width="100%" cellspacing="0">
+                <thead>
+                    <tr>
+                        <th>Resim</th>
+                        <th>Kategori Adı</th>
+                        <th>Urun Sayısı</th>
+                        <th width="18%"></th>
+
+                    </tr>
+                </thead>
+
+                <tbody>
+                    @foreach (var kategori in Model)
+                    {
+                        <tr>
+                            <td>
+                                <img src="https://via.placeholder.com/50" alt="UrunResim" />
+                            </td>
+                            <td>
+                                @*@kategori.KategoriAdi
+                                    Helper ile yazdırma alttaki.*@
+                                @Html.DisplayFor(modelItem => kategori.KategoriAdi)
+                            </td>
+                            <td>
+                                @(kategori.UrunSayisi + " adet ürün mevcut.")
+                            </td>
+
+
+                            <td class="text-center">
+
+                                @Html.ActionLink("Edit", "Edit", "Kategori", new { id = kategori.KategoriId }, new { @class = "btn btn-primary btn-xs" })
+
+
+                                @Html.ActionLink("Delete", "Delete", "Kategori", new { id = kategori.KategoriId }, new { @class = "btn btn-danger btn-xs" })
+                            </td>
+                        </tr>
+
+                    }
+
+                </tbody>
+            </table>
+        </div>
+    </div>
+
+</div>
+
+<p class="m-2">
+    Toplam Kategori Sayısı :
+    @ViewBag.KategoriSayisi
+</p>

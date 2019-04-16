@@ -1,0 +1,117 @@
+﻿@model genelTekrar01.Models.Urun
+
+@{
+    ViewBag.Title = "Delete";
+    Layout = "~/Views/Shared/_LayoutAdmin.cshtml";
+}
+
+<h3>@Html.DisplayFor(model => model.UrunAdi) , isimli bu ürünü silmek istediginize emin misiniz?</h3>
+<hr />
+<div>
+
+    @*güzel oldu modelden veriyi alıp yazma*@
+
+    <div class="row">
+
+        <div class="col-md-12">
+           
+            <div class="col-md-4">
+                <h4>Ürün Bilgileri</h4>
+                <hr />
+                <p>
+                    <b>@Html.DisplayNameFor(model => model.UrunAdi)</b>
+                    :
+
+                    @Html.DisplayFor(model => model.UrunAdi)
+                </p>
+
+                <p>
+                    <b>
+                        @Html.DisplayNameFor(model => model.UrunAciklama)
+                        :
+                    </b>
+
+
+                    @Html.DisplayFor(model => model.UrunAciklama)
+                </p>
+                <p>
+                    <b>
+                        @Html.DisplayNameFor(model => model.UrunFiyat)
+                        :
+                    </b>
+
+
+                    @Html.DisplayFor(model => model.UrunFiyat)
+
+                </p>
+
+                <p>
+                    <b>
+                        @Html.DisplayNameFor(model => model.EklenmeTarihi)
+                        :
+                    </b>
+
+
+                    @Html.DisplayFor(model => model.EklenmeTarihi)
+                </p>
+            </div>
+            <div class="col-md-4">
+                <p>
+                    <b>
+                        @Html.DisplayNameFor(model => model.Icerik)
+                        :
+                    </b>
+
+
+
+                    @Html.DisplayFor(model => model.Icerik)
+                </p>
+
+                <p>
+                    <b>
+                        @Html.DisplayNameFor(model => model.UrunResim)
+                        :
+                    </b>
+
+
+                    @Html.DisplayFor(model => model.UrunResim)
+                </p>
+                <p>
+                    <b>
+                        @Html.DisplayNameFor(model => model.StoktaMi)
+                        :
+                    </b>
+
+                    @Html.DisplayFor(model => model.StoktaMi)
+                </p>
+                <p>
+                    <b>
+                        @Html.DisplayNameFor(model => model.Anasayfa)
+                        :
+                    </b>
+
+                    @Html.DisplayFor(model => model.Anasayfa)
+                </p>
+
+
+            </div>
+
+
+
+
+        </div>
+
+
+    </div>
+
+
+    @using (Html.BeginForm())
+    {
+        @Html.AntiForgeryToken()
+
+        <div class="form-actions no-color">
+            <input type="submit" value="Ürün Sil" class="btn btn-danger" /> |
+            @Html.ActionLink("Geri Dön", "Index")
+        </div>
+    }
+</div>

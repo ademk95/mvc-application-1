@@ -1,0 +1,17 @@
+﻿@using genelTekrar01.Models
+@model List<UrunModel>
+
+
+
+<ul class="list-group">
+    @foreach (var urun in Model)
+    {
+        <li class="list-group-item">
+            @urun.UrunAdi
+            <b>@urun.KategoriAdi</b>
+            <i>@urun.UrunFiyat</i>
+        </li>
+    }
+</ul>
+
+
